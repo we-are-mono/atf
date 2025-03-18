@@ -21,7 +21,7 @@
 
 const struct ddr_cfg_regs static_1600 = {
 	.cs[0].bnds = 0x01FF,
-	.cs[0].config = 0x80010512,
+	.cs[0].config = 0x80840512,
 	.cs[0].config_2 = 0x00,
 	.timing_cfg[0] = 0x80550018,
 	.timing_cfg[1] = 0xCDC60F44,
@@ -32,7 +32,7 @@ const struct ddr_cfg_regs static_1600 = {
 	.timing_cfg[7] = 0x23300000,
 	.timing_cfg[8] = 0x03336800,
 	.sdram_cfg[0] = 0xE5040008,
-	.sdram_cfg[1] = 0x00400040,
+	.sdram_cfg[1] = 0x00400050,
 	.dq_map[0] = 0x00,
 	.dq_map[1] = 0x00,
 	.dq_map[2] = 0x00,
