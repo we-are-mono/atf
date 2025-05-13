@@ -1,70 +1,74 @@
 /*
 **
-**     
 **     Copyright Copyright 2025 Mono Technologies Inc.
-**     
-**      SPDX-License-Identifier: BSD-3-Claus
 **
-**     
+**     SPDX-License-Identifier: BSD-3-Clause
+**
 */
 
 #include <assert.h>
 #include <errno.h>
+#include <stdbool.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
-
 #include <common/debug.h>
-#include <ddr.h>
 #include <lib/utils.h>
-
 #include <errata.h>
+#include <plat_common.h>
+
+#include <ddr.h>
 #include <platform_def.h>
 
-const struct ddr_cfg_regs static_1600 = {
+const struct ddr_cfg_regs static_2100 = {
 	.cs[0].bnds = 0x01FF,
-	.cs[0].config = 0x80840512,
+	.cs[0].config = 0x80810512,
 	.cs[0].config_2 = 0x00,
-	.timing_cfg[0] = 0x80550018,
-	.timing_cfg[1] = 0xCDC60F44,
-	.timing_cfg[2] = 0x0049111C,
-	.timing_cfg[3] = 0x01161000,
-	.timing_cfg[4] = 0x01,
-	.timing_cfg[5] = 0x04001000,
-	.timing_cfg[7] = 0x23300000,
-	.timing_cfg[8] = 0x03336800,
-	.sdram_cfg[0] = 0xE5040008,
-	.sdram_cfg[1] = 0x00400050,
-	.dq_map[0] = 0x00,
-	.dq_map[1] = 0x00,
-	.dq_map[2] = 0x00,
-	.dq_map[3] = 0x00,
-	.sdram_mode[0] = 0x01010210,
+	.timing_cfg[0] = 0xFF770018,
+	.timing_cfg[1] = 0x020E1265,
+	.timing_cfg[2] = 0x005951A0,
+	.timing_cfg[3] = 0x125D1100,
+	.timing_cfg[4] = 0xD502,
+	.timing_cfg[5] = 0x06401400,
+	.timing_cfg[7] = 0x26600000,
+	.timing_cfg[8] = 0x06447A00,
+	.sdram_cfg[0] = 0x65240008,
+	.sdram_cfg[1] = 0x00401010,
+	.dq_map[0] = 0x0760A104,
+	.dq_map[1] = 0x84184184,
+	.dq_map[2] = 0x0611A104,
+	.dq_map[3] = 0x84100000,
+	.sdram_mode[0] = 0x01010834,
+	.sdram_mode[1] = 0x00100000,
 	.sdram_mode[8] = 0x0500,
-	.sdram_mode[9] = 0x04C80000,
+	.sdram_mode[9] = 0x08E40000,
 	.md_cntl = 0x00,
-	.interval = 0x18600618,
+	.interval = 0x1FFE07FF,
 	.data_init = 0xDEADBEEF,
 	.clk_cntl = 0x02800000,
 	.init_addr = 0x00,
 	.ddr_sr_cntr = 0x0,
 	.init_ext_addr = 0x00,
 	.zq_cntl = 0x8A090705,
-	.wrlvl_cntl[0] = 0x86750603,
-	.wrlvl_cntl[1] = 0x03080809,
-	.wrlvl_cntl[2] = 0x09090908,
-	.cdr[0] = 0x80040000,
-	.cdr[1] = 0x81,
+	.wrlvl_cntl[0] = 0x86750606,
+	.wrlvl_cntl[1] = 0x0507080A,
+	.wrlvl_cntl[2] = 0x0A0A0B09,
+	.cdr[0] = 0x80080000,
+	.cdr[1] = 0xC0,
+	.debug[28] = 0x4f,
 };
 
 long long board_static_ddr(struct ddr_info *priv)
 {
-	memcpy(&priv->ddr_reg, &static_1600, sizeof(static_1600));
+	memcpy(&priv->ddr_reg, &static_2100, sizeof(static_2100));
 
-	return 0x200000000;
+	return 0x200000000UL;
 }
 
 long long init_ddr(void)
 {
-	int spd_addr[] = { NXP_SPD_EEPROM0 };
+	int spd_addr[] = {NXP_SPD_EEPROM0};
 	struct ddr_info info;
 	struct sysinfo sys;
 	long long dram_size;
