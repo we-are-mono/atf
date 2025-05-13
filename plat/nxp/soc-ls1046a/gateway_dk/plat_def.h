@@ -23,7 +23,7 @@
  #define NXP_DDRCLK_FREQ		100000000
  
  /* UART related definition */
- #define NXP_CONSOLE_ADDR	NXP_UART_ADDR
+ #define NXP_CONSOLE_ADDR	    0x021C0500
  #define NXP_CONSOLE_BAUDRATE	115200
  
  /* Size of cacheable stacks */
