@@ -8,7 +8,7 @@
 BOOT_MODE			?=	qspi
 BOARD				:=	gateway_dk
 POVDD_ENABLE		:=	no
-SUPPORTED_BOOT_MODE	:=	qspi,emmc
+SUPPORTED_BOOT_MODE	:=	qspi emmc
 
 # DDR Compilation Configs
 CONFIG_STATIC_DDR	:= 1
