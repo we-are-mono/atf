@@ -17,8 +17,9 @@ DDRC_NUM_DIMM		:= 0
 NUM_OF_DDRC			:= 1
 DDRC_NUM_CS			:= 1
 DDR_ECC_EN			:= yes
-DDR_DEBUG			:= yes
-DEBUG				:= 0
+DDR_DEBUG			:= no
+DEBUG				:= 1
+LOG_LEVEL := 40
 
 # On-Board Flash Details
 QSPI_FLASH_SZ		:= 0x20000000
