@@ -71,6 +71,7 @@ const struct ddr_cfg_regs static_2100 = {
     .wrlvl_cntl[2] = 0x09090A08,
     .cdr[0] = 0x80080000,
     .cdr[1] = 0xC0,
+    .debug[28] = 0x4e,
 };
 
 long long board_static_ddr(struct ddr_info *priv)
